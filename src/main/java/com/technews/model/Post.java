@@ -6,6 +6,7 @@ import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -38,7 +39,7 @@ public class Post implements Serializable {
     private Date updatedAt = new Date();
 
     // Need to use FetchType.LAZY to resolve multiple bags exception
-    @OneToMany(mappedBy = "postId", cascade = CascadeType.ALl, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "postId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments;
 
     public Post() {}
