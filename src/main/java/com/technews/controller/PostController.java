@@ -34,6 +34,14 @@ public class PostController {
         return postList;
     }
 
+    @GetMapping("/api/posts/{id}")
+    public Post getPost(@PathVariable Integer id) {
+        Post returnPost = repository.getById(id);
+        returnPost.setVoteCount(voteRepository.countVotesByPostId(returnPost.getId()));
+
+        return returnPost;
+    }
+
     @PostMapping("/api/posts")
     @ResponseStatus(HttpStatus.CREATED)
     public Post addPost(@RequestBody Post post) {

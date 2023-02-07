@@ -51,6 +51,18 @@ public class UserController {
         return user;
     }
 
+    @PutMapping("/api/users/{id}")
+    public User updateUser(@PathVariable int id, @RequestBody User user) {
+        User tempUser = repository.getById(id);
+
+        if (!tempUser.equals(null)) {
+            user.setId(tempUser.getId());
+            repository.save(user);
+        }
+
+        return user;
+    }
+
     @DeleteMapping("/api/users/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable int id) {

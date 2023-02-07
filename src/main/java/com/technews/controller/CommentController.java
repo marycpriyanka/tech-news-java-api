@@ -34,7 +34,7 @@ public class CommentController {
         return repository.save(comment);
     }
 
-    @DeleteMapping("/api/comment/{id}")
+    @DeleteMapping("/api/comments/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteComment(@PathVariable int id) {
         repository.deleteById(id);
